@@ -1,0 +1,24 @@
+.table-view {
+    -fx-background-color: #191919;
+}
+.fondoPrincipal{
+    -fx-background-color: #191919;
+}
+.label{
+    -fx-text-fill: #E3651D;
+}
+.button{
+    -fx-background-radius: 15;
+    -fx-border-width: 1;
+    -fx-font-size: 15;
+    -fx-background-color: #3081D0;
+    -fx-text-fill: #FDF7E4;
+}
+.pantallaPrincipal{
+    -fx-background-color: #191919;
+    -fx-text-fill: #FDF7E4;
+}
+.botones-principal{
+    -fx-font-size: 25;
+    -fx-font-family: "Eras Demi ITC";
+}

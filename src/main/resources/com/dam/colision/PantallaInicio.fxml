@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="fondoPrincipal" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dam.colision.controller.PantallaInicioController">
+   <top>
+      <Label alignment="CENTER" prefHeight="118.0" prefWidth="600.0" text="La serpiente" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets top="40.0" />
+         </BorderPane.margin>
+         <font>
+            <Font name="Eras Demi ITC" size="72.0" />
+         </font>
+      </Label>
+   </top>
+   <center>
+      <Button mnemonicParsing="false" onAction="#iniciarJuego" prefHeight="63.0" prefWidth="396.0" styleClass="botones-principal" stylesheets="@style.css" text="Jugar" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets bottom="70.0" />
+         </BorderPane.margin>
+         <font>
+            <Font name="Eras Demi ITC" size="10.0" />
+         </font>
+      </Button>
+   </center>
+   <bottom>
+      <Button mnemonicParsing="false" onAction="#instrucciones" prefHeight="78.0" prefWidth="361.0" styleClass="botones-principal" text="Intrucciones de Jugabilidad" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets bottom="15.0" />
+         </BorderPane.margin>
+      </Button>
+   </bottom>
+</BorderPane>
