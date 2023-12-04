@@ -13,7 +13,7 @@
             <Insets top="40.0" />
          </BorderPane.margin>
          <font>
-            <Font name="Eras Demi ITC" size="72.0" />
+            <Font name="TenaliRamakrishna Regular" size="72.0" />
          </font>
       </Label>
    </top>
@@ -23,12 +23,12 @@
             <Insets bottom="70.0" />
          </BorderPane.margin>
          <font>
-            <Font name="Eras Demi ITC" size="10.0" />
+            <Font size="10.0" />
          </font>
       </Button>
    </center>
    <bottom>
-      <Button mnemonicParsing="false" onAction="#instrucciones" prefHeight="78.0" prefWidth="361.0" styleClass="botones-principal" text="Intrucciones de Jugabilidad" BorderPane.alignment="CENTER">
+      <Button mnemonicParsing="false" onAction="#instrucciones" prefHeight="78.0" prefWidth="380.0" styleClass="botones-principal" text="Intrucciones de Jugabilidad" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets bottom="15.0" />
          </BorderPane.margin>

@@ -89,7 +89,7 @@ public class TableroController implements Initializable {
         ImageView manzanaImageView = new ImageView(manzanaImage);
 
         // Ajusta el tamaño del ImageView según sea necesario
-        double escala = 2;
+        double escala = 1.2;
         manzanaImageView.setFitWidth(Math.min(tableView.getWidth(), tableView.getHeight()) / DIMENSION * escala);
         manzanaImageView.setFitHeight(Math.min(tableView.getWidth(), tableView.getHeight()) / DIMENSION * escala);
 
@@ -300,6 +300,8 @@ public class TableroController implements Initializable {
         // Limpiar la serpiente y la comida
         snake.clear();
         comida = generarNuevaComida();
+        lbStatus.setText(String.valueOf(0));
+        puntos = 0;
 
         // Inicializar la serpiente con una nueva posición
         int stat_x = 3;
