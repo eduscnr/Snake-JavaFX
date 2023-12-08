@@ -7,5 +7,6 @@ module com.dam.colision {
     opens com.dam.colision to javafx.fxml;
     exports com.dam.colision.controller;
     exports com.dam.colision.modelo;
+    exports com.dam.colision;
     opens com.dam.colision.controller to javafx.fxml;
 }

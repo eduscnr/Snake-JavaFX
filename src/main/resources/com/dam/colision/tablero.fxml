@@ -68,14 +68,24 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
       </GridPane>
-      <Label layoutX="59.0" layoutY="18.0" text="Puntuación:">
+      <Label layoutX="129.0" layoutY="17.0" text="Puntuación:">
          <font>
             <Font name="DejaVu Sans Bold" size="18.0" />
          </font></Label>
-      <Label fx:id="lbStatus" layoutX="193.0" layoutY="18.0" prefHeight="18.0" prefWidth="26.0" text="0">
+      <Label fx:id="lbStatus" alignment="CENTER" contentDisplay="CENTER" layoutX="246.0" layoutY="18.0" prefHeight="18.0" prefWidth="26.0" text="0">
          <font>
             <Font name="Open Sans Semibold" size="18.0" />
          </font></Label>
-      <Button fx:id="btnReiniciar" layoutX="385.0" layoutY="14.0" mnemonicParsing="false" onAction="#reiniciarJuego" text="Reiniciar" />
+      <Button fx:id="btnReiniciar" layoutX="289.0" layoutY="15.0" mnemonicParsing="false" onAction="#reiniciarJuego" text="Reiniciar" />
+      <Label layoutX="385.0" layoutY="17.0" text="Dirección:">
+         <font>
+            <Font name="DejaVu Sans Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblDireccionActual" alignment="CENTER" contentDisplay="CENTER" layoutX="472.0" layoutY="17.0" prefHeight="26.0" prefWidth="145.0">
+         <font>
+            <Font name="Open Sans Semibold" size="18.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

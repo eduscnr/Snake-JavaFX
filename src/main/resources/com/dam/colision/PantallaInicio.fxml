@@ -13,12 +13,12 @@
             <Insets top="40.0" />
          </BorderPane.margin>
          <font>
-            <Font name="TenaliRamakrishna Regular" size="72.0" />
+            <Font name="Bell MT" size="72.0" />
          </font>
       </Label>
    </top>
    <center>
-      <Button mnemonicParsing="false" onAction="#iniciarJuego" prefHeight="63.0" prefWidth="396.0" styleClass="botones-principal" stylesheets="@style.css" text="Jugar" BorderPane.alignment="CENTER">
+      <Button mnemonicParsing="false" onAction="#iniciarJuego" prefHeight="66.0" prefWidth="482.0" styleClass="botones-principal" stylesheets="@style.css" text="Jugar" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets bottom="70.0" />
          </BorderPane.margin>
@@ -28,7 +28,7 @@
       </Button>
    </center>
    <bottom>
-      <Button mnemonicParsing="false" onAction="#instrucciones" prefHeight="78.0" prefWidth="380.0" styleClass="botones-principal" text="Intrucciones de Jugabilidad" BorderPane.alignment="CENTER">
+      <Button mnemonicParsing="false" onAction="#instrucciones" prefHeight="78.0" prefWidth="418.0" styleClass="botones-principal" text="Intrucciones de Jugabilidad" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets bottom="15.0" />
          </BorderPane.margin>

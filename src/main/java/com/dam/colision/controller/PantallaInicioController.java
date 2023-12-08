@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -13,8 +14,10 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class PantallaInicioController extends Application {
+public class PantallaInicioController implements Initializable {
     @FXML
     void iniciarJuego(ActionEvent event) {
         FXMLLoader loader = new FXMLLoader();
@@ -44,7 +47,7 @@ public class PantallaInicioController extends Application {
         informacionJuego.setContentText("Puedes controlar la dirección de la serpiente utilizando las teclas:\n" + "W: Mover hacia arriba\n" +
                 "A: Mover hacia la izquierda\n" +
                 "S: Mover hacia abajo\n" +
-                "D: Mover hacia la derecha\n" + "o puede usar también\n"+
+                "D: Mover hacia la derecha\n" + "o puede usar también\n" +
                 "↑: Mover hacia arriba\n" +
                 "←: Mover hacia la izquierda\n" +
                 "↓: Mover hacia abajo\n" +
@@ -53,17 +56,7 @@ public class PantallaInicioController extends Application {
     }
 
     @Override
-    public void start(Stage stage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/dam/colision/PantallaInicio.fxml"));
-        Parent root = loader.load();
-        Scene scene = new Scene(root);
-        stage.setWidth(850);
-        stage.setHeight(580);
-        stage.setTitle("Snacke");
-        stage.setScene(scene);
-        stage.show();
-    }
-    public static void main(String[] args) {
-        launch(args);
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
     }
 }

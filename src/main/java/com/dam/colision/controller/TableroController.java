@@ -26,6 +26,8 @@ import java.util.ResourceBundle;
 
 public class TableroController implements Initializable {
     private Comida comida;
+    @FXML
+    private Label lblDireccionActual;
     private ArrayList<CuerpoSnacke> snake = new ArrayList<>();
     @FXML
     private GridPane tableView;
@@ -151,7 +153,7 @@ public class TableroController implements Initializable {
                 newHeadY = head.getY() + 1;
                 break;
         }
-
+        lblDireccionActual.setText(direccionActual);
         // Verificar si la nueva posición está dentro de los límites del tablero
         if (isValidPosition(newHeadX, newHeadY)) {
             // Verificar si la nueva posición coincide con la posición de la cola
