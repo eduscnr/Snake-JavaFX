@@ -7,16 +7,13 @@ import javafx.animation.AnimationTimer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
@@ -38,10 +35,12 @@ public class TableroController implements Initializable {
     private String direccionActual = "DERECHA";
     private boolean gameOver = false;
     private AnimationTimer gameLoop;
-    private long lastUpdateTime = 0;
-    private long timeBetweenUpdates = 300_000_000;
+    private long ultimaActualizacion = 0;
+    private long velocidadSerpiente = 300_000_000;
     private Stage stage;
     private PantallaInicioController aplicacionPrincipal;
+    private boolean pausado = false;
+
 
     public void setStage(Stage stage) {
         this.stage = stage;
@@ -109,16 +108,26 @@ public class TableroController implements Initializable {
         gameLoop = new AnimationTimer() {
             @Override
             public void handle(long now) {
-                if (now - lastUpdateTime >= timeBetweenUpdates) {
+                if (now - ultimaActualizacion >= velocidadSerpiente) {
                     moveSnake();
-                    lastUpdateTime = now;
+                    ultimaActualizacion = now;
                 }
             }
         };
         tableView.setOnKeyPressed(event -> {
             KeyCode code = event.getCode();
-            clickBotones(code);
+            if (code == KeyCode.SPACE) {
+                pausado = !pausado;
+                if (pausado) {
+                    gameLoop.stop();
+                } else {
+                    gameLoop.start();
+                }
+            } else {
+                clickBotones(code);
+            }
         });
+
         tableView.setFocusTraversable(true);
         tableView.requestFocus();
         gameLoop.start();
@@ -136,30 +145,30 @@ public class TableroController implements Initializable {
         CuerpoSnacke head = snake.get(0);
 
         // Determinar la nueva posición de la cabeza en función de la dirección actual
-        int newHeadX = head.getX();
-        int newHeadY = head.getY();
+        int nuevaCabezaX = head.getX();
+        int nuevaCabezaY = head.getY();
 
         switch (direccionActual) {
             case "DERECHA":
-                newHeadX = head.getX() + 1;
+                nuevaCabezaX = head.getX() + 1;
                 break;
             case "IZQUIERDA":
-                newHeadX = head.getX() - 1;
+                nuevaCabezaX = head.getX() - 1;
                 break;
             case "ARRIBA":
-                newHeadY = head.getY() - 1;
+                nuevaCabezaY = head.getY() - 1;
                 break;
             case "ABAJO":
-                newHeadY = head.getY() + 1;
+                nuevaCabezaY = head.getY() + 1;
                 break;
         }
         lblDireccionActual.setText(direccionActual);
         // Verificar si la nueva posición está dentro de los límites del tablero
-        if (isValidPosition(newHeadX, newHeadY)) {
+        if (validarPosicion(nuevaCabezaX, nuevaCabezaY)) {
             // Verificar si la nueva posición coincide con la posición de la cola
             for (int i = 1; i < snake.size(); i++) {
                 CuerpoSnacke cuerpo = snake.get(i);
-                if (newHeadX == cuerpo.getX() && newHeadY == cuerpo.getY()) {
+                if (nuevaCabezaX == cuerpo.getX() && nuevaCabezaY == cuerpo.getY()) {
                     // La cabeza ha chocado con la cola, juego over
                     Alert fin = new Alert(Alert.AlertType.WARNING);
                     fin.setTitle("Game Over");
@@ -172,13 +181,13 @@ public class TableroController implements Initializable {
             }
 
             // Crear un nuevo cuerpo en la nueva posición
-            CuerpoSnacke newHead = new CuerpoSnacke(newHeadX, newHeadY);
+            CuerpoSnacke nuevaCabeza = new CuerpoSnacke(nuevaCabezaX, nuevaCabezaY);
 
             // Agregar la nueva cabeza al frente de la serpiente
-            snake.add(0, newHead);
+            snake.add(0, nuevaCabeza);
 
             // Verificar si la cabeza de la serpiente alcanza la posición de la comida
-            if (newHeadX == comida.getPosX() && newHeadY ==comida.getPosY()) {
+            if (nuevaCabezaX == comida.getPosX() && nuevaCabezaY ==comida.getPosY()) {
                 // La serpiente ha alcanzado la comida, genera una nueva posición para la comida
                 puntos++;
                 lbStatus.setText(String.valueOf(puntos));
@@ -248,7 +257,7 @@ public class TableroController implements Initializable {
             }
 
             // Solo agregar nueva cabeza y eliminar cola si la posición es diferente
-            if (!getDireccionActual().equalsIgnoreCase(direccionAnterior) && isValidPosition(nuevaPosX, nuevaPosY)) {
+            if (!getDireccionActual().equalsIgnoreCase(direccionAnterior) && validarPosicion(nuevaPosX, nuevaPosY)) {
                 CuerpoSnacke nuevaCabeza = new CuerpoSnacke(nuevaPosX, nuevaPosY);
                 snake.add(0, nuevaCabeza);
                 if (nuevaPosX == comida.getPosX() && nuevaPosY == comida.getPosY()) {
@@ -269,7 +278,7 @@ public class TableroController implements Initializable {
             }
         }
     }
-    public boolean isValidPosition(int x, int y) {
+    public boolean validarPosicion(int x, int y) {
         return x >= 0 && x < DIMENSION && y >= 0 && y < DIMENSION;
     }
     private Comida generarNuevaComida() {
@@ -306,9 +315,9 @@ public class TableroController implements Initializable {
         puntos = 0;
 
         // Inicializar la serpiente con una nueva posición
-        int stat_x = 3;
-        int stat_y = 3;
-        snake.add(new CuerpoSnacke(stat_x, stat_y));
+        int iniciarX = 3;
+        int iniciarY = 3;
+        snake.add(new CuerpoSnacke(iniciarX, iniciarY));
 
         // Reiniciar dirección y estado del juego
         direccionActual = "DERECHA";

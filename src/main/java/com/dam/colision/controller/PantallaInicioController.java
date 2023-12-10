@@ -27,6 +27,8 @@ public class PantallaInicioController implements Initializable {
             Stage stage = new Stage();
             stage.setTitle("Juego La Serpiente");
             stage.initModality(Modality.WINDOW_MODAL);
+            raiz.setMinWidth(675);
+            raiz.setMinHeight(675);
             Scene scene = new Scene(raiz);
             stage.setScene(scene);
             TableroController controller = loader.getController();
